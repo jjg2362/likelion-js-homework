@@ -61,3 +61,23 @@ console.log(calculatePoint(100000, 'VIP'));
 console.log(calculatePoint(100000, 'GOLD'));
 console.log(calculatePoint(100000, 'SILVER'));
 console.log(calculatePoint(100000, ''));
+
+//5. 영화 티켓 가격 계산
+const getTicketPrice = function(type, isJojo, peopleCount) {
+  const jojoDiscountRate = 0.2;
+  const pricePerType = {
+    NORMAL: 14000,
+    '3D': 17000,
+    IMAX: 20000,
+  }
+
+  const finalPrice = (pricePerType[type] || pricePerType.NORMAL) * (1 - isJojo * jojoDiscountRate) * peopleCount;
+  return finalPrice;
+}
+
+console.log(getTicketPrice('3D', true, 2));
+console.log(getTicketPrice('3D', false, 2));
+console.log(getTicketPrice('IMAX', false, 1));
+console.log(getTicketPrice('IMAX', true, 1));
+console.log(getTicketPrice('', false, 3));
+console.log(getTicketPrice('', true, 3));
