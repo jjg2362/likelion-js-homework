@@ -1,5 +1,4 @@
 //1. 환영 메시지 생성
-
 function makeWelcomeMessage(userName, userGrade) {
   const message = {
     VIP: `🌟 VIP ${userName}님, 특별한 혜택이 준비되어 있습니다!`,
@@ -43,3 +42,22 @@ const getIsProperPassword = (password) => {
 console.log(getIsProperPassword('01234')); //비밀번호가 8자리 이하일때
 console.log(getIsProperPassword('012346789012346789012346789'));  //비밀번호가 20자리 이상일때
 console.log(getIsProperPassword('01234678'));  //비밀번호가 조건에 충족할 때
+
+//4. 포인트 적립 계산
+function calculatePoint(orderPrice, userGrade){
+  const ratePerGrade = {
+    VIP: 0.05,
+    GOLD: 0.03,
+    SILVER: 0.01,
+    NORMAL: 0.005
+  };
+
+  const userRate = ratePerGrade[userGrade] || ratePerGrade.NORMAL;
+
+  return parseInt(orderPrice) * userRate;
+}
+
+console.log(calculatePoint(100000, 'VIP'));
+console.log(calculatePoint(100000, 'GOLD'));
+console.log(calculatePoint(100000, 'SILVER'));
+console.log(calculatePoint(100000, ''));
