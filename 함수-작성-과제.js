@@ -31,3 +31,15 @@ console.log(getDeliveyPrice(51000, '서울')); //5만원 이상
 console.log(getDeliveyPrice(0, '서울')); //주문금액이 0일 때
 console.log(getDeliveyPrice(49000, '')); //배송지가 빈 문자열일 때
 
+//3. 비밀번호 유효성 검사
+const getIsProperPassword = (password) => {
+  const minPasswordLength = 8;
+  const maxPAsswordLength = 20;
+  const passwordLength = String(password).length;
+
+  return passwordLength >= minPasswordLength && passwordLength <= maxPAsswordLength;
+}
+
+console.log(getIsProperPassword('01234')); //비밀번호가 8자리 이하일때
+console.log(getIsProperPassword('012346789012346789012346789'));  //비밀번호가 20자리 이상일때
+console.log(getIsProperPassword('01234678'));  //비밀번호가 조건에 충족할 때
